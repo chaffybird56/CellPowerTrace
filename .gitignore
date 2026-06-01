@@ -10,6 +10,7 @@ build/
 *.o
 *.a
 pm_driver/pm_sim
+!samples/**
 runs/
 docker/.env
 docker/volumes/
