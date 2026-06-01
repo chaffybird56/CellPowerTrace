@@ -3,6 +3,12 @@
 ## Offline demo (default)
 
 ```bash
+bash scripts/verify_local.sh
+```
+
+Or step by step:
+
+```bash
 bash scripts/setup.sh && source .venv/bin/activate
 ./scripts/run_scenario.sh attach_idle_ping
 RUN=$(ls -1d runs/*_attach_idle_ping | tail -1)
