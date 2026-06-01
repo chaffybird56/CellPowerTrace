@@ -1,0 +1,2 @@
+# Minimal Open5GS SA config placeholder — mounted into gradiant/open5gs image.
+# See image docs for full template; scenario runner can use sample logs when Docker is unavailable.

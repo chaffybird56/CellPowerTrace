@@ -1,0 +1,23 @@
+name: attach_idle_ping
+description: >
+  5G SA attach, hold idle, ICMP traffic burst, return idle, detach.
+  Maps to NAS registration and RRC connected/idle phases for PM simulation.
+duration_s: 120
+steps:
+  - action: attach
+    wait_s: 15
+  - action: idle
+    wait_s: 20
+  - action: ping
+    target: 10.45.0.1
+    count: 10
+    wait_s: 15
+  - action: idle
+    wait_s: 20
+  - action: detach
+    wait_s: 10
+pm_profile:
+  connected_mw: 450
+  idle_mw: 120
+  drx_mw: 45
+  deep_sleep_mw: 8

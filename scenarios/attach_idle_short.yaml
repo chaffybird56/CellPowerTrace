@@ -1,0 +1,21 @@
+name: attach_idle_short
+description: Quick attach/idle cycle for CI and regression smoke tests.
+duration_s: 45
+steps:
+  - action: attach
+    wait_s: 8
+  - action: idle
+    wait_s: 12
+  - action: ping
+    target: 10.45.0.1
+    count: 4
+    wait_s: 8
+  - action: idle
+    wait_s: 10
+  - action: detach
+    wait_s: 5
+pm_profile:
+  connected_mw: 450
+  idle_mw: 120
+  drx_mw: 45
+  deep_sleep_mw: 8

@@ -1,0 +1,9 @@
+[UE] NAS: RegistrationRequest
+[UE] NAS: RegistrationAccept plmn=00101
+[UE] AS: RRCConnected state=CONNECTED
+[UE] PM: state CONNECTED score=450
+[UE] traffic: ping 10.45.0.1 seq=1
+[UE] idle: enter IDLE
+[UE] PM: state IDLE score=120
+[UE] NAS: DeregistrationAccept
+[UE] PM: state DEEP_SLEEP score=8

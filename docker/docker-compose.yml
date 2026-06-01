@@ -1,0 +1,41 @@
+# Open5GS 5G SA core + UERANSIM UE (optional live capture).
+# Requires Docker. First run downloads images (~1–2 GB).
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: cpt-mongo
+    command: mongod --bind_ip_all
+    volumes:
+      - mongo_data:/data/db
+    networks: [cpt_net]
+
+  open5gs:
+    image: gradiant/open5gs:2.7.0
+    container_name: cpt-open5gs
+    depends_on: [mongodb]
+    cap_add: [NET_ADMIN, SYS_ADMIN]
+    devices:
+      - /dev/net/tun
+    volumes:
+      - ./open5gs:/etc/open5gs
+    networks: [cpt_net]
+
+  ueransim:
+    image: gradiant/ueransim:3.2.6
+    container_name: cpt-ueransim
+    depends_on: [open5gs]
+    cap_add: [NET_ADMIN, SYS_ADMIN]
+    devices:
+      - /dev/net/tun
+    volumes:
+      - ./ueransim:/etc/ueransim
+      - ../runs:/runs
+    networks: [cpt_net]
+    command: ["sleep", "infinity"]
+
+networks:
+  cpt_net:
+    driver: bridge
+
+volumes:
+  mongo_data:
