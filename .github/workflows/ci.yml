@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  scenarios:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build PM simulator
+        run: make -C pm_driver
+
+      - name: Install Python package
+        run: |
+          python3 -m pip install -U pip
+          pip install -e pipeline/python
+
+      - name: Run attach_idle_short
+        run: |
+          ./scripts/run_scenario.sh attach_idle_short
+          RUN=$(ls -1d runs/*_attach_idle_short | tail -1)
+          perl pipeline/perl/normalize_logs.pl --in "$RUN/raw_ue.log" --out "$RUN/events.jsonl"
+          ./pm_driver/pm_sim "$RUN/events.jsonl" "$RUN/power_trace.jsonl"
+          python3 -m cellpowertrace.cli run attach_idle_short
+
+      - name: Regression smoke (sample logs)
+        run: |
+          ./scripts/run_scenario.sh attach_idle_ping
+          python3 -m cellpowertrace.cli analyze attach_idle_ping --baseline v1
