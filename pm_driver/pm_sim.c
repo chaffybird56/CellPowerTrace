@@ -1,3 +1,5 @@
+#define _POSIX_C_SOURCE 200809L
+
 #include "pm_sim.h"
 
 #include <stdio.h>

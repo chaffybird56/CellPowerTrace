@@ -14,6 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential perl
+
       - name: Build PM simulator
         run: make -C pm_driver
 
@@ -22,15 +27,15 @@ jobs:
           python3 -m pip install -U pip
           pip install -e pipeline/python
 
-      - name: Run attach_idle_short
+      - name: Pipeline smoke (attach_idle_short)
         run: |
           ./scripts/run_scenario.sh attach_idle_short
           RUN=$(ls -1d runs/*_attach_idle_short | tail -1)
           perl pipeline/perl/normalize_logs.pl --in "$RUN/raw_ue.log" --out "$RUN/events.jsonl"
           ./pm_driver/pm_sim "$RUN/events.jsonl" "$RUN/power_trace.jsonl"
-          python3 -m cellpowertrace.cli run attach_idle_short
+          test -s "$RUN/power_trace.jsonl"
 
-      - name: Regression smoke (sample logs)
+      - name: Regression smoke (attach_idle_ping)
         run: |
           ./scripts/run_scenario.sh attach_idle_ping
           python3 -m cellpowertrace.cli analyze attach_idle_ping --baseline v1

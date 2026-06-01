@@ -1,6 +1,6 @@
 # CellPowerTrace
 
-[![CI](https://github.com/chaffybird56/CellPowerTrace/actions/workflows/ci.yml/badge.svg)](https://github.com/chaffybird56/CellPowerTrace/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/chaffybird56/CellPowerTrace/ci.yml?label=CI&logo=github)](https://github.com/chaffybird56/CellPowerTrace/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![Perl](https://img.shields.io/badge/Perl-5-log%20pipeline-39457E)](pipeline/perl/)
