@@ -1,0 +1,17 @@
+[project]
+name = "cellpowertrace"
+version = "0.1.0"
+description = "Cellular power regression analyzer for simulated UE stacks"
+requires-python = ">=3.10"
+dependencies = ["pyyaml>=6.0"]
+
+[project.scripts]
+cellpowertrace = "cellpowertrace.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cellpowertrace*"]
