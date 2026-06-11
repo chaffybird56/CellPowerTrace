@@ -8,7 +8,7 @@
 
 Cellular power regression analyzer for **simulated** 5G UE stacks. Runs attach → idle → traffic → idle scenarios, maps NAS/AS-style events through a userspace power-state simulator, and reports KPIs plus baseline deltas.
 
-**Resume-accurate framing:** analyzed open-source / simulated cellular logs (Open5GS, UERANSIM); built a simulated modem PM interface and Perl/Python tooling—not Qualcomm production modem firmware or handset QXDM captures.
+analyzed open-source / simulated cellular logs (Open5GS, UERANSIM); built a simulated modem PM interface and Perl/Python tooling—not Qualcomm production modem firmware or handset QXDM captures.
 
 ![Architecture](docs/images/architecture.png)
 
