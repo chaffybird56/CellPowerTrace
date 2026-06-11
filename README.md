@@ -3,7 +3,6 @@
 [![CI](https://img.shields.io/github/actions/workflow/status/chaffybird56/CellPowerTrace/ci.yml?label=CI&logo=github)](https://github.com/chaffybird56/CellPowerTrace/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
-[![Perl](https://img.shields.io/badge/Perl-5-log%20pipeline-39457E)](pipeline/perl/)
 [![Docker](https://img.shields.io/badge/Docker-Open5GS%20%2B%20UERANSIM-2496ED?logo=docker&logoColor=white)](docker/)
 
 Cellular power regression analyzer for **simulated** 5G UE stacks. Runs attach → idle → traffic → idle scenarios, maps NAS/AS-style events through a userspace power-state simulator, and reports KPIs plus baseline deltas.
